@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div> 
+
+        <label for="text"></label>
+        <input type="text" placeholder="szöveg" id="aha" value="">
+    </div>
+    
+    <div> 
+        <label for="text">Nagybetű </label>
+      <input type="radio"  id="valasz" onclick="nagy()">
+    </div>
+    
+    <div> 
+        <label for="text">Kisbetű </label>
+        <input type="radio" id="valaszz" onclick="kicsi()">
+    </div>
+
+    <p id="hol"></p>
+
+    <div>
+
+        <label for="text"> felhasználónév:</label>
+        <input type="text"  maxlength="16" id="felhasznalonev">
+        <br>
+        <label for="text">jelszó:</label>
+        <input type="password"  id="jelszo1">
+        <br>
+        <label for="text">Jelszó ismét:</label>
+        <input type="password"  id="jelszo2">
+        <br>
+        <label for="text">Email: </label>
+        <input type="email" id="email">
+        <br>
+        <label for="text">Kérem a születési dátumát:</label>
+        <input type="date" id="datum">
+        <br>
+        <button type="submit" onclick="doit(), mail()">Küldés</button>
+    </div>
+    <br></br>
+
+    <div>
+    <label for="text">Az ön neve: </label>
+    <input type="text" id="name">
+    <br>
+
+
+    <label for="text">Email-e:</label>
+    <input type="email" id="eamil2">
+
+    <br>
+    <label for="text">Születési dátuma</label>
+    <input type="date" id="datetime">
+
+    <br>
+
+    <label >Neme: </label>
+            <select  id="neme">
+                <option value="" selected disabled>Az ön neme:</option>
+                <option value="1">Nő</option>
+                <option value="2">Férfi</option>
+                <option value="3">Egyéb</option>
+            </select>
+        <br>
+
+    <label> Mikor tölti ki a kérdőívet? </label>
+    <input type="time" id="ido">
+    
+    <br>
+    <label for="text">Az ön kedvenc sör márkája: </label>
+    <input type="text" id="beer">
+
+    <br>
+    <button type="submit" onclick="ellenorzes()">Küldés</button>
+
+    </div>
+    
+    
+    <script>
+        const nagybetu=document.getElementById("nagybetu");
+        const kisbetu=document.getElementById("kisbetu");
+        const valasz=document.getElementById("valasz");
+        const hol=document.getElementById("hol");
+        const aha=document.getElementById("aha");
+        const valaszz=document.getElementById("valaszz");
+        
+        
+
+      
+       
+        
+        function nagy()
+{   
+    let text = document.getElementById("aha").value;
+    let result = text.toUpperCase();
+
+    hol.innerHTML = result;
+
+    if( text=" ") /* ez a része nem működött sajnos */
+    {
+        alert("Nincs beírva semmi");
+    }
+
+    
+   
+
+}
+    function kicsi() /* sajnos ez a feladat nemn sikerült és nem értettem a logikai hibáját */
+{
+    let szoveg = document.getElementById("aha").value;
+    let eredmeny = szoveg.ToLowerCase();
+
+    hol.innerHTML = eredmeny;
+
+    if(szoveg=" ")
+    {
+        alert("Nics beírva semmi");
+    }
+}
+function doit()
+{
+    let jelszo1=document.getElementById("jelszo1").value;
+    let jelszo2=document.getElementById("jelszo2").value;
+
+    if (jelszo1!=jelszo2)
+{
+    alert("a két jelszó nem egyezik meg");
+}
+if(jelszo1.length<5 )
+{
+    alert("minimum 5 karakter");
+}
+if(jelszo2.length<5 )
+{
+    alert("Minimum 5 karakter");
+}
+}
+
+function mail()
+{
+    let mail=document.getElementById("email").value
+    
+
+    if (mail.includes("@","."))
+    {
+        console.log("jó");
+    }
+    else
+    {
+        alert("Hibás a megadott email");
+    }
+}
+function ellenorzes()
+{
+    const namee = document-getElementById("name").value
+    const eemail2 = document-getElementById("email2").value
+    const iido = document-getElementById("ido").value
+    const ddatetime = document-getElementById("datetime").value
+    const bbeer = document-getElementById("beer").value
+    const nneme = document-getElementById("neme").value
+
+if(namee.length == 0 )
+{
+    alert("Ön hibás nevet adott meg");
+}
+if(eemail2 != 0 && eemail2.includes("@","."))
+    {
+        alert("Ön hihábs emailt adott meg");
+    }
+if(iido.length == 0)
+{
+    alert("hibás az idő");
+}
+if(bbeer.length == 0)
+{
+    alert("nem adott meg sör márkát");
+}
+if(ddatetime.length==0)
+{
+    alert("nem adott meg születési dátumot");
+}
+if(nneme.length==0)
+{
+    alert("nem választott nemet");
+}
+
+
+}
+
+
+
+
+
+
+
+    </script>
+</body>
+</html>
